@@ -1,16 +1,23 @@
 package com.ractodev.youtubewrapped.datafetcher.service.raw;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
-// Class representing the raw data found in the takeout JSON file
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TakeoutVideoData {
     @JsonProperty("title")
-    private String title = "Unknown title";
-    @JsonProperty("subtitles")
-    private List<VideoDetail> videoDetails = List.of(new VideoDetail("Unknown Channel", "Unknown Url"));
+    private String title;
 
-    // Getter and setter methods for the above fields
+    @JsonProperty("subtitles")
+    private List<VideoDetail> videoDetails;
+
+    // No-args constructor
+    public TakeoutVideoData() {
+        this.title = "Unknown title";
+        this.videoDetails = List.of(new VideoDetail("Unknown Channel", "Unknown Url"));
+    }
+
     public String getTitle() {
         return this.title;
     }
@@ -23,6 +30,19 @@ public class TakeoutVideoData {
         return this.videoDetails;
     }
 
+    public void setVideoDetails(List<VideoDetail> videoDetails) {
+        this.videoDetails = videoDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "TakeoutVideoData{" +
+                "title='" + title + '\'' +
+                ", videoDetails=" + videoDetails +
+                '}';
+    }
+
+
     public static class VideoDetail {
         @JsonProperty("name")
         private String channel;
@@ -30,7 +50,11 @@ public class TakeoutVideoData {
         @JsonProperty("url")
         private String url;
 
-        // Constructor
+        // No-args constructor
+        public VideoDetail() {
+        }
+
+        // Custom constructor
         public VideoDetail(String channel, String url) {
             this.channel = channel;
             this.url = url;
@@ -51,5 +75,14 @@ public class TakeoutVideoData {
         public void setUrl(String url) {
             this.url = url;
         }
+
+        @Override
+        public String toString() {
+            return "VideoDetail{" +
+                    "channel='" + channel + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
+
     }
 }

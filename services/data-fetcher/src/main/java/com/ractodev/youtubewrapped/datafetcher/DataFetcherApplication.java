@@ -1,6 +1,7 @@
 package com.ractodev.youtubewrapped.datafetcher;
 
 import com.ractodev.youtubewrapped.datafetcher.model.TakeoutProcessingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 @SpringBootApplication
 public class DataFetcherApplication implements CommandLineRunner {
 
+    @Autowired
     private TakeoutProcessingService takeoutProcessingService;
 
     public static void main(String[] args) {
