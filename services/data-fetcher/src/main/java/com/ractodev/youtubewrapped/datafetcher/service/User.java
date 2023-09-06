@@ -1,5 +1,7 @@
 package com.ractodev.youtubewrapped.datafetcher.service;
 
+import com.ractodev.youtubewrapped.datafetcher.service.enriched.Video;
+
 import java.util.List;
 
 public class User {
