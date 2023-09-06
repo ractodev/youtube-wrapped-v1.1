@@ -1,15 +1,15 @@
 package com.ractodev.youtubewrapped.datafetcher.service;
 
-import com.ractodev.youtubewrapped.datafetcher.service.enriched.Video;
+import com.ractodev.youtubewrapped.datafetcher.service.enriched.EnrichedVideo;
 
 import java.util.List;
 
 public class User {
     private String userId;
-    private List<Video> watchedVideos;
+    private List<EnrichedVideo> watchedVideos;
 
     // Constructor
-    public User(String userId, List<Video> watchedVideos) {
+    public User(String userId, List<EnrichedVideo> watchedVideos) {
         this.userId = userId;
         this.watchedVideos = watchedVideos;
     }
@@ -18,7 +18,7 @@ public class User {
         return this.userId;
     }
 
-    public List<Video> getWatchedVideos() {
+    public List<EnrichedVideo> getWatchedVideos() {
         return this.watchedVideos;
     }
 }

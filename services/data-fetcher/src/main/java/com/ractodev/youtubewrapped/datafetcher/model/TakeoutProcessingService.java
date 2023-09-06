@@ -2,7 +2,7 @@ package com.ractodev.youtubewrapped.datafetcher.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ractodev.youtubewrapped.datafetcher.service.raw.TakeoutVideoData;
+import com.ractodev.youtubewrapped.datafetcher.service.raw.RawTakeoutVideo;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 // Reads takeout file, parses to user and video objects, fetches additional details from youtube api
+
 @Service
 public class TakeoutProcessingService {
     private String filePath;
@@ -25,15 +26,15 @@ public class TakeoutProcessingService {
     }
 
     // Reads the Google Takeout JSON file
-    private List<TakeoutVideoData> readTakeoutFile() throws IOException {
+    private List<RawTakeoutVideo> readTakeoutFile() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File jsonFile = new File(filePath);
-        List<TakeoutVideoData> videoDataList = objectMapper.readValue(jsonFile, new TypeReference<List<TakeoutVideoData>>() {});
+        List<RawTakeoutVideo> videoDataList = objectMapper.readValue(jsonFile, new TypeReference<List<RawTakeoutVideo>>() {});
 
         return videoDataList;
     }
 
-    private void printTakeoutData(List<TakeoutVideoData> videoDataList) {
+    private void printTakeoutData(List<RawTakeoutVideo> videoDataList) {
         for (int i = 0; i < 5; i++) {
             System.out.println(videoDataList.get(i).toString());
         }
