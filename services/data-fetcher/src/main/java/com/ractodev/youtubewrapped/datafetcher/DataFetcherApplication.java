@@ -1,11 +1,18 @@
 package com.ractodev.youtubewrapped.datafetcher;
 
+import com.ractodev.youtubewrapped.datafetcher.model.TakeoutProcessingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Scanner;
+
 @SpringBootApplication
 public class DataFetcherApplication implements CommandLineRunner {
+
+    @Autowired
+    private TakeoutProcessingService takeoutProcessingService;
 
     public static void main(String[] args) {
         SpringApplication.run(DataFetcherApplication.class, args);
@@ -13,13 +20,12 @@ public class DataFetcherApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Here, you can add any code to test your service or invoke certain methods.
-        // For instance, you might fetch data from the YouTube API and print it to the terminal.
         System.out.println("DataFetcher service started!");
 
-        // Call any service methods you want to test here
-        // Example:
-        // watchHistoryService.fetchRecentHistory();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please provide path to your YouTube Takeout JSON file: ");
+        String filePath = scanner.nextLine();
+        takeoutProcessingService.processTakeoutData(filePath);
 
         System.out.println("DataFetcher service finished!");
     }
