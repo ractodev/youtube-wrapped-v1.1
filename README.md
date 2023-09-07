@@ -1,4 +1,4 @@
-# YouTube Wrapped Version 2
+# YouTube Wrapped Version 1.1
 A project designed to emulate features similar to Spotify Wrapped but for YouTube. It aims to provide users with a deep dive into their YouTube watching habits, offering detailed insights, trends, and statistics based on their watch history.
 
 ## Project Goals
